@@ -23,8 +23,8 @@
      <home-swiper 
      :banners='banners' 
      @swiperLoad='swiperLoad'/>
-     <recommend-view :recommends='recommends'/>
-     <feature-view/>
+     <recommend-view :recommends='recommends' @recommendLoad="recommendLoad"/>
+     <feature-view @featureLoad="featureLoad"/>
      <tab-control 
      :details="['流行','新款','精品']" 
      @controlClick="controlClick"
@@ -151,8 +151,15 @@ methods:{
   // },
   swiperLoad(){
     //1.获取tab-control的tabOffsetTop
+    
     this.tabOffsetTop=this.$refs.tabcontrol2.$el.offsetTop
     console.log(this.tabOffsetTop);
+  },
+  featureLoad(){
+  this.$refs.scroll.refresh()
+  },
+  recommendLoad(){
+    this.$refs.scroll.refresh()
   }
 
 
